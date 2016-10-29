@@ -6,7 +6,7 @@ import java.io.OutputStream;
 /**
  * Created by lm on 29.10.16.
  */
-class SimpleStatement implements PlantStatement {
+class SimpleStatement extends AbstractStatementTemplate implements PlantStatement {
 
 	private final String statementString;
 
@@ -15,15 +15,7 @@ class SimpleStatement implements PlantStatement {
 	}
 
 	@Override
-	public void write(OutputStream outputStream) {
-		try {
-			outputStream.write(getStatementAsString().getBytes());
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	private String getStatementAsString() {
+	protected String getStatementAsString() {
 		return statementString;
 	}
 }
